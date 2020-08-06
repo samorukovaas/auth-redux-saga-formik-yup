@@ -1,15 +1,18 @@
-import React, { FC, useEffect, useState, ChangeEvent } from 'react';
-import firebase from 'firebase';
-import { RecaptchaVerifier } from '@firebase/auth-types';
-import { useTranslation } from 'react-i18next';
-import { Button } from '@material-ui/core';
-import FormControl from '@material-ui/core/FormControl';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import InputLabel from '@material-ui/core/InputLabel';
-import { useDispatch } from 'react-redux';
-import { logInPhone, sendCodePhone } from '../../redux/slices/authSlice/authSlice';
-import classes from './Auth.module.scss';
-import ModalWindow from '../ModalWindow';
+import React, { FC, useEffect, useState, ChangeEvent } from "react";
+import firebase from "firebase";
+import { RecaptchaVerifier } from "@firebase/auth-types";
+import { useTranslation } from "react-i18next";
+import { Button } from "@material-ui/core";
+import FormControl from "@material-ui/core/FormControl";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
+import InputLabel from "@material-ui/core/InputLabel";
+import { useDispatch } from "react-redux";
+import {
+  logInPhone,
+  sendCodePhone,
+} from "../../redux/slices/authSlice/authSlice";
+import classes from "./Auth.module.scss";
+import ModalWindow from "../SignUp/ModalWindow";
 
 type PhoneAuthProps = {
   phoneCode: string;
@@ -34,7 +37,7 @@ const PhoneAuth: FC<PhoneAuthProps> = ({
   const dispatch = useDispatch();
 
   const phoneInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    if (e.target.value !== '') {
+    if (e.target.value !== "") {
       setInputError(false);
       setPhoneInput(e.target.value);
     } else {
@@ -44,7 +47,7 @@ const PhoneAuth: FC<PhoneAuthProps> = ({
   };
 
   const phoneCodeChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    if (e.target.value !== '') {
+    if (e.target.value !== "") {
       setCodeError(false);
       setPhoneCode(e.target.value);
     } else {
@@ -66,8 +69,8 @@ const PhoneAuth: FC<PhoneAuthProps> = ({
   };
 
   useEffect((): void => {
-    recaptchaVerifier = new firebase.auth.RecaptchaVerifier('signinbutton', {
-      size: 'invisible',
+    recaptchaVerifier = new firebase.auth.RecaptchaVerifier("signinbutton", {
+      size: "invisible",
     });
   }, []);
 
@@ -76,8 +79,11 @@ const PhoneAuth: FC<PhoneAuthProps> = ({
       {codeSent && (
         <div className={classes.inputGroup}>
           <FormControl className={classes.formControl} variant="outlined">
-            <InputLabel classes={{ root: classes.label, shrink: classes.labelFocused }} htmlFor="confirm-code">
-              {t('Сonfirmation code')}
+            <InputLabel
+              classes={{ root: classes.label, shrink: classes.labelFocused }}
+              htmlFor="confirm-code"
+            >
+              {t("Сonfirmation code")}
             </InputLabel>
             <OutlinedInput
               id="confirm-code"
@@ -85,7 +91,7 @@ const PhoneAuth: FC<PhoneAuthProps> = ({
               type="text"
               value={phoneCode}
               onChange={phoneCodeChange}
-              label={t('Сonfirmation code')}
+              label={t("Сonfirmation code")}
               autoFocus
             />
             <Button
@@ -95,16 +101,22 @@ const PhoneAuth: FC<PhoneAuthProps> = ({
               color="primary"
               className={classes.button}
             >
-              {t('Send')}
+              {t("Send")}
             </Button>
           </FormControl>
         </div>
       )}
       <>
-        <div className={classes.inputGroup} style={codeSent ? { height: 0, visibility: 'hidden' } : {}}>
+        <div
+          className={classes.inputGroup}
+          style={codeSent ? { height: 0, visibility: "hidden" } : {}}
+        >
           <FormControl className={classes.formControl} variant="outlined">
-            <InputLabel classes={{ root: classes.label, shrink: classes.labelFocused }} htmlFor="input-phone">
-              {t('Phone number')}
+            <InputLabel
+              classes={{ root: classes.label, shrink: classes.labelFocused }}
+              htmlFor="input-phone"
+            >
+              {t("Phone number")}
             </InputLabel>
             <OutlinedInput
               id="input-phone"
@@ -112,7 +124,7 @@ const PhoneAuth: FC<PhoneAuthProps> = ({
               type="text"
               value={phoneInput}
               onChange={phoneInputChange}
-              label={t('Phone number')}
+              label={t("Phone number")}
             />
             <Button
               type="button"
@@ -122,14 +134,14 @@ const PhoneAuth: FC<PhoneAuthProps> = ({
               color="primary"
               className={classes.button}
             >
-              {t('Login')}
+              {t("Login")}
             </Button>
           </FormControl>
         </div>
 
         <div className={classes.helper}>
           <ModalWindow />
-          <p>{t('Forgot your password')}</p>
+          <p>{t("Забыли пароль?")}</p>
         </div>
       </>
     </div>

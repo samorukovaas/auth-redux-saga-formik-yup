@@ -1,17 +1,17 @@
-@import '../../styles/Colors.scss';
-@import '../../styles/Fonts.scss';
-@import '../../styles/theme.scss';
-@import '../../styles/breakpoints.scss';
+@import "../../styles/Colors.scss";
+@import "../../styles/Fonts.scss";
+@import "../../styles/theme.scss";
+@import "../../styles/breakpoints.scss";
 
 h3 {
   @include RobotoLightH3;
-  @include color('text-primary');
+  @include color("text-primary");
   margin-top: 60px;
 }
 
 h6 {
   @include RobotoLightH6;
-  @include color('text-primary');
+  @include color("text-primary");
   margin: 10px 0 50px;
 }
 
@@ -48,7 +48,7 @@ h6 {
     position: absolute;
     z-index: 500;
     top: 0;
-    @include background-color('background-paper');
+    @include background-color("background-paper");
   }
 
   .group {
@@ -106,7 +106,7 @@ h6 {
       justify-content: space-between;
       box-sizing: border-box;
       font-size: 12px;
-      @include color('text-secondary');
+      @include color("text-secondary");
       text-transform: uppercase;
 
       @include sm {

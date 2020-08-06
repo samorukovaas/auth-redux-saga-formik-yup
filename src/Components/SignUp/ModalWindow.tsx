@@ -1,7 +1,12 @@
 import React, { FC, useState } from "react";
 import { Modal, Button } from "@material-ui/core";
-import classes from "./ModalWindow.module.scss";
-import SignUp from "../sign-up/sign-up.component";
+import classes from "./SignUp.module.scss";
+import SignUp from ".";
+
+type SignUpProps = {
+  email: string;
+  password: string;
+};
 
 const ModalWindow: FC = () => {
   const [open, setOpen] = useState(false);
@@ -15,14 +20,14 @@ const ModalWindow: FC = () => {
   };
 
   const body = (
-    <div className={classes.paper}>
+    <div className={classes.modal}>
       <SignUp />
     </div>
   );
 
   return (
     <div>
-      <Button href="#text-buttons" onClick={handleOpen} className={classes.btn}>
+      <Button onClick={handleOpen} className={classes.btn}>
         Зарегистрироваться
       </Button>
       <Modal open={open} onClose={handleClose}>
