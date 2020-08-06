@@ -18,6 +18,9 @@ import {
   signUpSuccess,
   signUpFailed,
   signUpStart,
+  resetPasswordSuccess,
+  resetPasswordFail,
+  passwordReminder,
 } from "../slices/authSlice/authSlice";
 import {
   signInPhone,
@@ -25,7 +28,18 @@ import {
   signInGoogle,
   signOut,
   emailPasswordSignup,
+  emailPasswordReminder,
 } from "../../api/authApi";
+
+function* handlePasswordReminder(action: AnyAction): SagaIterator {
+  try {
+    yield call(emailPasswordReminder, action.payload.email);
+
+    yield put(resetPasswordSuccess);
+  } catch (err) {
+    yield put(resetPasswordFail);
+  }
+}
 
 export function* signUp(action: AnyAction): SagaIterator {
   try {
@@ -36,7 +50,7 @@ export function* signUp(action: AnyAction): SagaIterator {
     );
     yield put(signUpSuccess({ user }));
   } catch (error) {
-    yield put(signUpFailed(error.message));
+    yield put(signUpFailed(error));
   }
 }
 
@@ -137,6 +151,7 @@ function* authSaga(): SagaIterator {
   yield takeLatest(logOut.type, logOutHelper);
   yield fork(observerFlow);
   yield takeLatest(signUpStart.type, signUp);
+  yield takeLatest(passwordReminder.type, handlePasswordReminder);
 }
 
 export default authSaga;

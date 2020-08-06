@@ -8,7 +8,8 @@ type AuthState = {
   codeSent: boolean;
   loading: boolean;
   error: string | null;
-  UserData: any;
+  FormData: User | null;
+  email: string | null;
 };
 
 const initialState: AuthState = {
@@ -17,7 +18,8 @@ const initialState: AuthState = {
   codeSent: false,
   loading: true,
   error: null,
-  UserData: {},
+  FormData: null,
+  email: null,
 };
 
 const auth = createSlice({
@@ -68,7 +70,20 @@ const auth = createSlice({
     }),
     signUpStart: (state, action): AuthState => ({
       ...state,
-      UserData: action.payload,
+      FormData: action.payload,
+    }),
+    resetPasswordSuccess: (state): AuthState => ({
+      ...state,
+      loading: false,
+    }),
+    resetPasswordFail: (state): AuthState => ({
+      ...state,
+      loading: false,
+    }),
+    passwordReminder: (state, action): AuthState => ({
+      ...state,
+      loading: true,
+      email: action.payload,
     }),
   },
 });
@@ -88,6 +103,9 @@ export const {
   signUpSuccess,
   signUpFailed,
   signUpStart,
+  resetPasswordSuccess,
+  resetPasswordFail,
+  passwordReminder,
 } = auth.actions;
 
 export default auth.reducer;

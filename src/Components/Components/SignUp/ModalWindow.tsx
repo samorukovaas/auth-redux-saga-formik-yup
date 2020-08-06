@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import { Modal, Button } from "@material-ui/core";
 import classes from "./SignUp.module.scss";
-import SignUp from ".";
+import SignUp from "../SignUp/SignUp";
 
 type SignUpProps = {
   email: string;
