@@ -1,6 +1,6 @@
-@import "./Colors.scss";
-@import "./theme.scss";
-@import "./breakpoints.scss";
+@import './Colors.scss';
+@import './theme.scss';
+@import './breakpoints.scss';
 
 @mixin Fonts($fontWeight, $fontSize, $lineHeight) {
   font-family: Roboto, Helvetica, Arial, sans-serif;
@@ -28,7 +28,7 @@
   font-size: 48px;
   line-height: 65px;
   text-align: center;
-  @include color("text-primary");
+  @include color('text-primary');
 
   @media (max-width: 600px) {
     font-size: 30px;
@@ -46,7 +46,7 @@
 @mixin RobotoLightH6() {
   @include Fonts(400, 20px, 23px);
   letter-spacing: 0.15px;
-  @include color("text-secondary");
+  @include color('text-secondary');
 
   @media (max-width: 600px) {
     font-size: 18px;
@@ -56,21 +56,21 @@
 @mixin RobotoLightBody() {
   @include Fonts(400, 18px, 28px);
   letter-spacing: 0.5px;
-  @include color("text-secondary");
+  @include color('text-secondary');
 }
 @mixin RobotoLightBody2() {
   @include Fonts(400, 14px, 20px);
   letter-spacing: 0.25px;
-  @include color("text-secondary");
+  @include color('text-secondary');
 }
 @mixin RobotoLightSubtitle() {
   @include Fonts(400, 16px, 24px);
   letter-spacing: 0.15px;
-  @include color("text-primary");
+  @include color('text-primary');
 }
 @mixin RobotoLightSubtitle2() {
   @include Fonts(400, 14px, 24px);
-  @include color("text-primary");
+  @include color('text-primary');
 }
 @mixin Button() {
   @include Fonts(500, 16px, 20px);

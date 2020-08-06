@@ -13,6 +13,7 @@ import {
 } from "../../redux/slices/authSlice/authSlice";
 import classes from "./Auth.module.scss";
 import ModalWindow from "../SignUp/ModalWindow";
+import ModalPassword from "../ForgotPassword/ModalPassword";
 
 type PhoneAuthProps = {
   phoneCode: string;
@@ -141,7 +142,7 @@ const PhoneAuth: FC<PhoneAuthProps> = ({
 
         <div className={classes.helper}>
           <ModalWindow />
-          <p>{t("Забыли пароль?")}</p>
+          <ModalPassword />
         </div>
       </>
     </div>

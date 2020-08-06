@@ -30,7 +30,7 @@ export type InfoType = {
 };
 
 export type Operation = {
-  type: "-" | "+";
+  type: '-' | '+';
   amount: string;
   date: string;
   icon?: string;
